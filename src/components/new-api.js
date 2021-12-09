@@ -7,11 +7,13 @@ export default class NewsApiService{
     fetchArticles() {
         console.log(this);
        
-        fetch(`https://pixabay.com/api/?key=24711891-660ee969a9a9139e98081d9b6&q=${this.searchQuery}&image_type=photo&per_page=6&page=${this.page}`)
-            .then(r => r.json())
+        return fetch(`https://pixabay.com/api/?key=24711891-660ee969a9a9139e98081d9b6&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${this.page}`)
+            .then(response => response.json())
             .then(data => {
                 console.log(data);
                 this.incrementPage();
+
+                return data.hits;
             });
 
     }
