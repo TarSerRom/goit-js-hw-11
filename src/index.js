@@ -53,7 +53,7 @@ function appendHitsMarkup(data) {
   const gallery = new SimpleLightbox('.gallery a',{close:true, closeText:'×',showCounter:true,preloading:true,enableKeyboard:true,docClose:true,disableScroll:true});
   gallery.refresh();
 
-  if (newsApiService.page * 40 >= data.totalHits && data.hits.length !== 0 ) {
+  if (data.hits.length < 40 && data.hits.length > 0) {
     loadMoreBtn.hide();
     Notify.info("We're sorry, but you've reached the end of search results.")
   }
